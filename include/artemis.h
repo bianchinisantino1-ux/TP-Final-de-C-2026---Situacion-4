@@ -14,3 +14,17 @@ typedef struct {
     double hundimiento_m;       // 1.50 m
 } CapsulaOrion;
 
+typedef struct {
+    double trabajo_rozamiento_J;
+    double desaceleracion_ms2;
+    double desaceleracion_g;
+    double fuerza_impacto_N;
+    double fuerza_impacto_g;
+    int reingreso_exitoso;      // 1: Exito, 0: Fracaso
+    char causa_fallo[120];
+} ResultadoReingreso;
+
+// Prototipos de funciones
+ResultadoReingreso calcular_reingreso(const CapsulaOrion *capsula, double angulo_gamma);
+
+#endif
