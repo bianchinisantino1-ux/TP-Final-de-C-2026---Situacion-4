@@ -17,3 +17,25 @@ ResultadoReingreso calcular_reingreso(const CapsulaOrion *capsula, double angulo
         strcpy(res.causa_fallo, "Desaceleracion Excesiva (gamma > 7.0 deg). Destruccion por exceso de calor y carga g.");
         return res;
     }
+
+res.reingreso_exitoso = 1;
+
+    // a. Trabajo total de rozamiento (W_roz = Delta K + Delta U)
+    double delta_K = 0.5 * capsula->masa_kg * (pow(capsula->v_paracaldas_ms, 2) - pow(capsula->v_inicial_ms, 2));
+    double delta_U = capsula->masa_kg * GRAVEDAD * (capsula->h_paracaldas_m - capsula->h_inicial_m);
+    res.trabajo_rozamiento_J = delta_K + delta_U;
+
+    // b. Desaceleracion media
+    res.desaceleracion_ms2 = (capsula->v_paracaldas_ms - capsula->v_inicial_ms) / capsula->duracion_fase_s;
+    res.desaceleracion_g = fabs(res.desaceleracion_ms2) / GRAVEDAD;
+
+    // c. Fuerza promedio durante amerizaje (impacto en agua)
+    double delta_K_impacto = 0.5 * capsula->masa_kg * pow(capsula->v_impacto_ms, 2);
+    double f_neta = delta_K_impacto / capsula->hundimiento_m;
+    double peso = capsula->masa_kg * GRAVEDAD;
+
+    res.fuerza_impacto_N = f_neta + peso;
+    res.fuerza_impacto_g = res.fuerza_impacto_N / peso;
+
+    return res;
+}
