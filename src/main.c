@@ -25,3 +25,24 @@ int main(void) {
 
         opcion = leer_entero_rango("Seleccione una opcion (1-3): ", 1, 3);
 
+        if (opcion == 1 || opcion == 2) {
+            double gamma = (opcion == 1) ? 6.25 : leer_double_rango("Ingrese el angulo de reingreso gamma en grados (0 - 90): ", 0.0, 90.0);
+            ResultadoReingreso res = calcular_reingreso(&orion, gamma);
+
+            if (!res.reingreso_exitoso) {
+                printf("\n[FALLO DE MISION]: %s\n", res.causa_fallo);
+            } else {
+                printf("\n--------------------------------------------------\n");
+                printf("         REPORTE DE REINGRESO Y AMERIZAJE         \n");
+                printf("--------------------------------------------------\n");
+                printf("Trabajo de rozamiento (W_roz): %.2e J (%.2f GJ)\n", res.trabajo_rozamiento_J, res.trabajo_rozamiento_J / 1e9);
+                printf("Desaceleracion media:         %.2f m/s2 (%.2f g)\n", res.desaceleracion_ms2, res.desaceleracion_g);
+                printf("Fuerza media del agua:         %.2f N (%.2f veces el peso)\n", res.fuerza_impacto_N, res.fuerza_impacto_g);
+                printf("--------------------------------------------------\n");
+            }
+        }
+    } while (opcion != 3);
+
+    printf("\nSimulacion finalizada. Gracias por usar el Simulador Artemis.\n");
+    return 0;
+}
