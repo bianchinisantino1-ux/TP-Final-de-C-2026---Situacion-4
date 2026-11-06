@@ -10,3 +10,8 @@
 * **Mañanes Amarilla**, Lautaro Facundo
 * **Ponce**, Marcos Lautaro
 * **San Vicente**, María Juliana
+
+---
+
+## Descripción del Problema
+Este proyecto implementa una simulación computacional modular en C para modelar la fase final de reingreso atmosférico y amerizaje de la cápsula Orión de la misión Artemis IV.
