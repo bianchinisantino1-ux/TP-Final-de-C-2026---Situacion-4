@@ -26,7 +26,7 @@ El programa evalúa:
 
 ## Estructura del Proyecto
 
-text
+```text
 artemis_simulador/
 ├── include/
 │   ├── artemis.h         # Estructuras de la cápsula y prototipos físicos
@@ -38,6 +38,9 @@ artemis_simulador/
 ├── .gitignore            # Filtro de archivos binarios y temporales
 ├── Makefile              # Script de automatización de compilación
 └── README.md             # Documentación del proyecto
+```
+
+---
 
 ## Compilación y Ejecución
 * Opción 1: Utilizando Makefile
