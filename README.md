@@ -23,3 +23,18 @@ El programa evalúa:
 4. **Ventana de Seguridad de Reingreso:** Validación del ángulo de entrada gamma ($5.5^\circ \le \gamma \le 7.0^\circ$) para evitar rebotes atmosféricos o fallos estructurales por exceso de desaceleración.
 
 ---
+
+## Estructura del Proyecto
+
+text
+artemis_simulador/
+├── include/
+│   ├── artemis.h         # Estructuras de la cápsula y prototipos físicos
+│   └── validaciones.h    # Prototipos de ingreso seguro y control de buffer
+├── src/
+│   ├── artemis.c         # Lógica y ecuaciones físicas del reingreso
+│   ├── validaciones.c    # Implementación de validaciones de entrada
+│   └── main.c            # Interfaz CLI y menú principal interactivo
+├── .gitignore            # Filtro de archivos binarios y temporales
+├── Makefile              # Script de automatización de compilación
+└── README.md             # Documentación del proyecto
