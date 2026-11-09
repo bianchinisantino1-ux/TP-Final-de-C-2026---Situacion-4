@@ -70,3 +70,26 @@ int main(void) {
 
     return 0;
 }
+
+#include <stdio.h>
+#include <stdlib.h>
+#include "artemis.h"
+#include "validaciones.h"
+
+int main(void) {
+    int opcion = 0;
+
+    do {
+        printf("\n==================================================\n");
+        printf("    SIMULADOR ARTEMIS IV - PROBLEMA 4: REINGRESO   \n");
+        printf("==================================================\n");
+        printf("1. Ejecutar Simulacion Estandar (gamma = 6.25 deg)\n");
+        printf("2. Ingresar Angulo de Reingreso Personalizado\n");
+        printf("3. Salir\n");
+        printf("--------------------------------------------------\n");
+        printf("Seleccione una opcion (1-3): ");
+
+        if (!leer_entero_rango(&opcion, 1, 3)) {
+            printf("[ERROR] Opcion invalida. Intente de nuevo.\n");
+            continue;
+        }
