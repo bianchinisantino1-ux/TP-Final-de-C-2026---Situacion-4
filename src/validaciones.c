@@ -13,17 +13,41 @@ int leer_entero(int *dest) {
         return 0;
     }
     limpiar_buffer();
-    *dest = val;
+    dest = val;
     return 1;
 }
 
-int leer_double(double *dest) {
+int leer_double(doubledest) {
     double val;
     if (scanf("%lf", &val) != 1) {
         limpiar_buffer();
         return 0;
     }
     limpiar_buffer();
+    dest = val;
+    return 1;
+}
+
+int leer_entero_rango(intdest, int min, int max) {
+    int val;
+    if (scanf("%d", &val) != 1) {
+        limpiar_buffer();
+        return 0;
+    }
+    limpiar_buffer();
+    if (val < min  val > max) return 0;
+    dest = val;
+    return 1;
+}
+
+int leer_double_rango(doubledest, double min, double max) {
+    double val;
+    if (scanf("%lf", &val) != 1) {
+        limpiar_buffer();
+        return 0;
+    }
+    limpiar_buffer();
+    if (val < min  val > max) return 0;
     *dest = val;
     return 1;
 }
