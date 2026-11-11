@@ -47,8 +47,7 @@ artemis_simulador/
 * *./simulador_artemis*
 
 * Opción 2: Compilación directa con GCC
-* **gcc -Wall -Wextra -std=c99 -Iinclude src/main.c src/artemis.c src/validaciones.c -o simulador_artemis -lm
-./simulador_artemis**
+* **gcc -Wall -Wextra -std=c99 -Iinclude src/main.c src/artemis.c src/validaciones.c -o simulador_artemis.exe -lm ; .\simulador_artemis.exe**
 
 ## Declaración Transparente del Uso de Inteligencia Artificial
 En cumplimiento con los lineamientos del trabajo práctico sobre el uso de herramientas de IA:
