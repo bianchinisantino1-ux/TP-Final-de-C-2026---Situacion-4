@@ -28,3 +28,61 @@ int main(void) {
             printf("[ERROR] Opción inválida. Intente de nuevo.\n");
             continue;
         }
+
+        switch (opcion) {
+            case 1: {
+                ultima_c = inicializar_capsula(6.25);
+                ultima_r = calcular_reingreso(&ultima_c);
+                hay_ultima = 1;
+                printf("\n--- RESULTADOS REINGRESO ESTANDAR (gamma = 6.25 deg) ---\n");
+                printf("Trabajo Rozamiento: %.2f GJ\n", ultima_r.trabajo_rozamiento / 1e9);
+                printf("Desaceleracion Media: %.2f m/s^2 (%.2f g)\n", ultima_r.desaceleracion_m_s2, ultima_r.desaceleracion_g);
+                printf("Fuerza Impacto Agua: %.2f kN\n", ultima_r.fuerza_agua / 1000.0);
+                printf("Estado: %s\n", ultima_r.es_seguro ? "TRAYECTORIA SEGURA" : "PELIGROSA / FUERA DE VENTANA");
+                simulaciones_realizadas++;
+                break;
+            }
+            case 2: {
+                double gamma;
+                printf("Ingrese angulo de reingreso gamma (entre 0.0 y 90.0 deg): ");
+                if (leer_double_rango(&gamma, 0.0, 90.0)) {
+                    ultima_c = inicializar_capsula(gamma);
+                    ultima_r = calcular_reingreso(&ultima_c);
+                    hay_ultima = 1;
+                    printf("\n--- RESULTADOS ANGULO PERSONALIZADO (%.2f deg) ---\n", gamma);
+                    printf("Trabajo Rozamiento: %.2f GJ\n", ultima_r.trabajo_rozamiento / 1e9);
+                    printf("Desaceleracion Media: %.2f m/s^2 (%.2f g)\n", ultima_r.desaceleracion_m_s2, ultima_r.desaceleracion_g);
+                    printf("Fuerza Impacto Agua: %.2f kN\n", ultima_r.fuerza_agua / 1000.0);
+                    printf("Estado: %s\n", ultima_r.es_seguro ? "TRAYECTORIA SEGURA" : "PELIGROSA / FUERA DE VENTANA");
+                    simulaciones_realizadas++;
+                } else {
+                    printf("[ERROR] Angulo fuera de rango valido.\n");
+                }
+                break;
+            }
+            case 3:
+                mostrar_analisis_sensibilidad();
+                simulaciones_realizadas++;
+                break;
+            case 4:
+                simular_telemetria_descenso(6.25);
+                simulaciones_realizadas++;
+                break;
+            case 5: {
+                if (hay_ultima) {
+                    exportar_reporte_txt(&ultima_c, &ultima_r, "reporte_reingreso.txt");
+                } else {
+                    CapsulaOrion c = inicializar_capsula(6.25);
+                    ResultadosSimulacion r = calcular_reingreso(&c);
+                    exportar_reporte_txt(&c, &r, "reporte_reingreso.txt");
+                }
+                break;
+            }
+            case 6:
+                printf("\nSaliendo del simulador Artemis... ¡Hasta luego!\n");
+                break;
+        }
+    } while (opcion != 6);
+
+    return 0;
+}
