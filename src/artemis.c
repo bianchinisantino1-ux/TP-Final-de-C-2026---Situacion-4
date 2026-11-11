@@ -41,3 +41,4 @@ ResultadosSimulacion calcular_reingreso(const CapsulaOrion *c) {
 
     return r;
 }
+
