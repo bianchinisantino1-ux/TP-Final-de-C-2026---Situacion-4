@@ -25,4 +25,9 @@ typedef struct {
 CapsulaOrion inicializar_capsula(double gamma_deg);
 ResultadosSimulacion calcular_reingreso(const CapsulaOrion *c);
 
+// Funciones avanzadas del menú de 6 opciones
+void mostrar_analisis_sensibilidad(void);
+void simular_telemetria_descenso(double gamma_deg);
+void exportar_reporte_txt(const CapsulaOrion *c, const ResultadosSimulacion *r, const char *filename);
+
 #endif
