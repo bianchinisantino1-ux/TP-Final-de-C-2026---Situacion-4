@@ -44,7 +44,7 @@ artemis_simulador/
 
 ## Compilación y Ejecución
 * Opción 1: Utilizando Makefile
-* *./simulador_artemis*
+* *./simulador_artemis.exe*
 
 * Opción 2: Compilación directa con GCC
 * **gcc -Wall -Wextra -std=c99 -Iinclude src/main.c src/artemis.c src/validaciones.c -o simulador_artemis.exe -lm ; .\simulador_artemis.exe**
